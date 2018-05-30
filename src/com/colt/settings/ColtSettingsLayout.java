@@ -72,9 +72,15 @@ import com.colt.settings.fragments.About;
 
 import com.colt.settings.ca.transforms.*;
 
+import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import com.android.settings.development.DevelopmentSettings;
+
 public class ColtSettingsLayout extends InstrumentedFragment {
 
     private static final String TAG = "ColtSettingsLayout";
+    final String KEY_DEVICE_PART = "device_part";
+    final String KEY_DEVICE_PART_PACKAGE_NAME = "com.oneplus.shit";
     ViewPager mViewPager;
     ViewGroup mContainer;
     PagerSlidingTabStrip mTabs;
@@ -106,6 +112,11 @@ public class ColtSettingsLayout extends InstrumentedFragment {
     // Set actionbar elevation 0 to make tab and actionbar look uniform.
         getActivity().getActionBar().setElevation(0);
         getActivity().getActionBar().setTitle(R.string.colt_interface);
+
+   // DeviceParts
+        if (!DevelopmentSettings.isPackageInstalled(getActivity(), KEY_DEVICE_PART_PACKAGE_NAME)) {
+            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_PART));
+        }
 
     }
 
