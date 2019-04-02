@@ -1049,4 +1049,8 @@
     <string name="qs_footer_settings_title">Settings icon</string>
     <string name="qs_footer_settings_summary">Display Settings icon in quick settings footer</string>
 
+    <!-- OnePlus Shit -->
+    <string name="device_part_title">OnePlus Shit</string>
+    <string name="device_part_summary">OnePlus Speicific Features</string>
+
 </resources>

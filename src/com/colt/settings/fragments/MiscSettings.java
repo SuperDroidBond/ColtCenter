@@ -65,11 +65,19 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 	public void onCreate(Bundle icicle) {
          super.onCreate(icicle);
 
+        final String KEY_DEVICE_PART = "oneplus_shit";
+        final String KEY_DEVICE_PART_PACKAGE_NAME = "com.oneplus.shit.settings";
+
         addPreferencesFromResource(R.xml.misc_settings);
 
 	ContentResolver resolver = getActivity().getContentResolver();
         PreferenceScreen prefSet = getPreferenceScreen();
         Resources res = getResources();
+
+        // OnePlus Shit
+        if (!Utils.isPackageInstalled(getActivity(), KEY_DEVICE_PART_PACKAGE_NAME)) {
+            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_PART));
+        }
 
 	mQsHeaderStyle = (ListPreference) findPreference(QS_HEADER_STYLE);
         int qsHeaderStyle = Settings.System.getInt(resolver,
